@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Iniciar Sesion</title>
+<link rel="stylesheet" href="css/styles_login.css">
+</head>
+<body>
+<div class="login-box">
+  <h2>Iniciar Sesion</h2>
+  <form id="login-form" action="procesar_login.php" method="post">
+    <div class="user-box">
+      <input type="text" name="gmail" required="">
+      <label>Gmail</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="password" required="">
+      <label>Password</label>
+    </div>
+    <a href="inicio.html" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Ingresar
+    </a>
+  </form>
+  <p style="text-align: center; color: white;">No tienes cuenta? <a href="RegistroUsuario.html" style="color: white;">Registrarme</a></p>
+  <p style="text-align: center; color: white;"><a href="login_admin.html" style="color: white;">Iniciar como administrador</a></p>
+</div>
+
+<script>
+function validarLogin() {
+  var gmail = document.getElementsByName("gmail")[0].value;
+  var password = document.getElementsByName("password")[0].value;
+
+  // Realizar una solicitud HTTP para validar los datos en el servidor
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "procesar_login.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Si la respuesta es éxito, redirigir al usuario a la página de inicio
+      if (xhr.responseText.trim() === "success") {
+        window.location.href = "inicio.html";
+      } else {
+        // Si la respuesta no es éxito, mostrar un mensaje de error
+        alert(xhr.responseText);
+      }
+    }
+  };
+  xhr.send("gmail=" + gmail + "&password=" + password);
+}
+</script>
+
+</body>
+</html>

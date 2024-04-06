@@ -1,0 +1,10 @@
+.img-descarga {
+    width: 100px; /* Tamaño deseado para la imagen */
+    height: auto; /* Para mantener la proporción original */
+    display: block; /* Convertir la imagen en un bloque para centrarla */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+}
+
+.card-body {
+    text-align: center; /* Centrar el contenido del cuerpo de la tarjeta */
+}
